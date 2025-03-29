@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
-//import 'chat_page.dart';
-//import 'educate_page.dart';
 import 'home_page.dart';
-import 'login_page/login_page.dart';
-import 'login_page/registration_page.dart';
+import 'login_page.dart';
+import 'registration_page.dart';
+import 'package:firebase_core/firebase_core.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(const MyApp());
 }
 
@@ -22,8 +23,8 @@ class MyApp extends StatelessWidget {
       ),
       initialRoute: '/login',
       routes: {
-        '/login': (context) => const LoginPage(),
-        '/register': (context) => const RegistrationPage(),
+        '/login': (context) => LoginPage(),
+        '/register': (context) => RegistrationPage(),
         '/home': (context) => const HomePage(),
       },
     );
